@@ -1,6 +1,6 @@
 ---
 # Nginx
-http_host: "ec2-54-170-86-104.eu-west-1.compute.amazonaws.com"
+http_host: "ec2-34-255-4-153.eu-west-1.compute.amazonaws.com"
 http_conf: "grimordal.conf"
 http_port: "80"
 https_port: "443"
