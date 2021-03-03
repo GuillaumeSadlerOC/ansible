@@ -6,7 +6,7 @@ http_port: "80"
 https_port: "443"
 ssh_port: "22"
 
-wp_site_path: "/var/www/grimordal"
+wp_site_path: "/var/www/grimordal/"
 
 # wp-config
 wp_db_name: "defaultdb"
