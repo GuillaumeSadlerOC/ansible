@@ -85,11 +85,11 @@
 
   handlers:
     - name: Reload Nginx
-    service:
-      name: nginx
-      state: reloaded
+      service:
+        name: nginx
+        state: reloaded
     
     - name: Restart Nginx
-    service:
-      name: nginx
-      state: restarted
+      service:
+        name: nginx
+        state: restarted
