@@ -16,15 +16,17 @@
     
     # Nginx Configuration
     - name: Copy Nginx config
-      template: src="files/default.j2" dest="/etc/nginx/sites-available/{{ http_conf }}" backup=true
+      template: 
+        src: "files/default.j2" 
+        dest: "/etc/nginx/sites-available/{{ http_conf }}" 
+        backup: true
       tags: "nginx"
 
     - name: Enable new site
       file: 
         src: "/etc/nginx/sites-available/{{ http_conf }}" 
-        dest: "/etc/nginx/sites-available/{{ http_conf }}"
+        dest: "/etc/nginx/sites-enabled/{{ http_conf }}"
         state: link
-        force: true
       notify: Reload Nginx
       tags: "nginx"
 
