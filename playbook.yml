@@ -20,7 +20,11 @@
       tags: "nginx"
 
     - name: Enable new site
-      file: src="/etc/nginx/sites-available/{{ http_conf }}" dest="/etc/nginx/sites-available/{{ http_conf }}" state=link
+      file: 
+        src: "/etc/nginx/sites-available/{{ http_conf }}" 
+        dest: "/etc/nginx/sites-available/{{ http_conf }}"
+        state: link
+        force: true
       notify: Reload Nginx
       tags: "nginx"
 
@@ -79,4 +83,14 @@
       file: path=/opt/bitnami/apps/wordpress/htdocs/wp-config.php mode="777"
       tags: "memcached"
 
-        
+  handlers:
+    - name: Reload Nginx
+    service:
+      name: nginx
+      state: reloaded
+    
+    - name: Restart Nginx
+    service:
+      name: nginx
+      state: restarted
+      
