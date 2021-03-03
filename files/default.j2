@@ -1,10 +1,6 @@
 # @source https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/
 
 # Upstream to abstract backend connection(s) for php
-upstream php {
-    server unix:/var/run/php/php-fpm.sock;
-    server 127.0.0.1:9000;
-}
 
 server {
     listen {{ http_port }};
