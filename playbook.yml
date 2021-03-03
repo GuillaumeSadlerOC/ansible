@@ -72,7 +72,9 @@
       file:
         path: "{{ wp_site_path }}"
         state: directory
-        mode: '0755'
+        owner: www-data
+        group : www-data
+        mode: 755
 
     - name: Extract WordPress
       unarchive:
