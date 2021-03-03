@@ -18,7 +18,10 @@
     - name: Copy Nginx config
       template: 
         src: "files/default.j2" 
-        dest: "/etc/nginx/sites-available/{{ http_conf }}" 
+        dest: "/etc/nginx/sites-available/{{ http_conf }}"
+        owner: root
+        group: root
+        mode: 0644
         backup: true
       tags: "nginx"
 
@@ -27,6 +30,9 @@
         src: "/etc/nginx/sites-available/{{ http_conf }}" 
         dest: "/etc/nginx/sites-enabled/{{ http_conf }}"
         state: link
+        owner: root
+        group: root
+        mode: 0644
       notify: Reload Nginx
       tags: "nginx"
 
@@ -74,7 +80,7 @@
         state: directory
         owner: www-data
         group : www-data
-        mode: 755
+        recurse: yes
 
     - name: Extract WordPress
       unarchive:
@@ -93,6 +99,8 @@
       template: 
         src: "files/wp-config.php.j2" 
         dest: "{{ wp_site_path }}/wordpress/wp-config.php"
+        owner: www-data
+        group: www-data
         backup: true 
       tags: "wordpress-installation"
     
@@ -101,7 +109,6 @@
         path: "{{ wp_site_path }}/wordpress/"
         owner: www-data 
         group: www-data 
-        mode: 775 
         state: directory 
         recurse: yes
       tags: "wordpress-installation"
@@ -111,7 +118,7 @@
         path: "{{ wp_site_path }}/wordpress/wp-content/"
         owner: www-data 
         group: www-data 
-        mode: 755 
+        mode: 775 
         state: directory 
         recurse: yes
       tags: "wordpress-installation"
