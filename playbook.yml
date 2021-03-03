@@ -121,6 +121,7 @@
         mode: 775 
         state: directory 
         recurse: yes
+      notify: Reload Nginx
       tags: "wordpress-installation"
 
   handlers:
