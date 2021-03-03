@@ -111,25 +111,6 @@
         recurse: yes
       tags: "wordpress-installation"
 
-    # Memcached Client Installation
-    # W3 Total Cache Installation
-    - name: Install memcached
-      apt: 
-        name: memcached 
-        state: latest
-
-    - name: Install php memcache
-      apt: 
-        name: php5-memcache 
-        state: latest
-      notify: restart php5-fpm
-
-    - name: Change perm of wp-config
-      file: 
-        path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php 
-        mode: "777"
-      tags: "memcached"
-
   handlers:
     - name: Reload Nginx
       service:
